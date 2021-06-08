@@ -1,0 +1,11 @@
+package com.hyeyum.domain;
+
+import lombok.Data;
+
+@Data
+public class StatusCategory {
+	Long studno;
+	Boolean status;
+	Boolean change;
+	String year;
+}

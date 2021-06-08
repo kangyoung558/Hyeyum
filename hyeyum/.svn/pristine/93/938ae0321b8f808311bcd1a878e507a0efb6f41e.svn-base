@@ -1,0 +1,18 @@
+package com.hyeyum.domain;
+
+import lombok.Data;
+
+@Data
+public class ScheduleCategory {
+	private String year;
+	private String month;
+	private String day;
+	
+	public String getMonthStr() {
+		return this.year + "-" + this.month;
+	}
+	
+	public String getDayStr() {
+		return this.year + "-" + this.month + "-" + this.day;
+	}
+}

@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
+<jsp:include page="../includes/header.jsp" />
+<jsp:include page="../includes/sidebar.jsp" />
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">강의조회</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item"><a href="#">Get managementcourse</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- *************************************************************** -->
+                <!-- Start First Cards -->
+                <!-- *************************************************************** -->
+                <div class="card-group">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <form method="post" action="">
+								 <div class="form-row">
+									 <div class="form-group col-md-3">
+									    <label for="coursno">과목코드</label>
+									    <input type="text" class="form-control" name="coursno" id="coursno" readonly value="${course.coursno}" placeholder="과목코드 입력란">
+								 	 </div>
+									 <div class="form-group col-md-3">
+									    <label for="name">과목명</label>
+									    <input type="text" class="form-control" name="name" id="name" value="${course.name}" placeholder="이름 입력란">
+								 	 </div>
+									 <div class="form-group col-md-3">
+									    <label for="dname">담당학과</label>
+									    <input type="text" class="form-control" name="dname" id="dname" readonly value="${course.dname}" placeholder="담당학과 입력란">						 	
+									 </div> 
+									 <div class="form-group col-md-3">
+									    <label for="pname">담당교수</label>
+									    <input type="text" class="form-control" name="pname" id="pname" readonly value="${course.pname}" placeholder="담당교수 입력란">								 	
+									 </div>
+								 </div>
+							    <div class="form-row">
+									 <div class="form-group col-md-2">
+									    <label for="credit">학점</label>
+									    <input type="text" class="form-control" name="credit" id="credit" readonly value="${course.credit}" placeholder="학점">
+								 	 </div>
+									 <div class="form-group col-md-2">
+									    <label for="locno">강의실</label>
+									    <input type="text" class="form-control" name="locno" id="locno" value="${course.locno}" placeholder="강의실">								 	
+									 </div>
+									 <div class="form-group col-md-2">
+									    <label for="semester">학기</label>
+									    <input type="text" class="form-control" name="semester" id="semester"  value="${course.semester}" placeholder="수업시간">
+								 	 </div>
+									 <div class="form-group col-md-2">
+									    <label for="day">요일</label>
+									    <input type="text" class="form-control" name="day" id="day"  value="${course.day}" placeholder="수업시간">
+								 	 </div>
+									 <div class="form-group col-md-2">
+									    <label for="startTime">시작교시</label>
+									    <input type="text" class="form-control" name="startTime" id="startTime"  value="${course.startTime}" placeholder="수업시간">
+								 	 </div>
+									 <div class="form-group col-md-2">
+									    <label for="endTime">끝교시</label>
+									    <input type="text" class="form-control" name="endTime" id="endTime"  value="${course.endTime}" placeholder="수업시간">
+								 	 </div>
+									 <div class="form-group col-md-2">
+									    <label for="maxnum">수강정원</label>
+									    <input type="text" class="form-control" name="maxnum" id="maxnum" value="${course.maxnum}" placeholder="수강정원">								 	
+									 </div>
+								 </div>
+								 <div class="form-row">
+ 									 <div class="form-group col-md-2">
+									    <button type="button" class="btn btn-secondary btn-sm">강의계획서</button>							 	
+									 </div>
+								 	
+								 </div>
+								 <div class="row">
+								 	<div class="col-md-12 mb-2">
+								    	<button data-oper="deletecourse" class="btn btn-info btn-block" formaction="deletecourse">강의삭제</button>								 	
+								 	</div>
+								 </div>
+								 <div class="row">
+								 	<div class="col-md-12">
+								    	<button type="submit" id="updatecourse" class="btn btn-info btn-block" formaction="updatecourse">강의수정</button>								 	
+								 	</div>
+								 </div>
+								 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+							</form>
+                        </div>
+                    </div>
+                </div>
+                <!-- *************************************************************** -->
+                <!-- End First Cards -->
+                <!-- *************************************************************** -->
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+<jsp:include page="../includes/footer.jsp" />

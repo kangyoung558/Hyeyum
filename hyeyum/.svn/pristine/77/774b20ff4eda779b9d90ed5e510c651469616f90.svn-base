@@ -1,0 +1,334 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
+<jsp:include page="../includes/header.jsp" />
+<jsp:include page="../includes/sidebar.jsp" />
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Student</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-center">
+                        <div class="customize-input float-right">
+                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                                <option selected>Aug 19</option>
+                                <option value="1">July 19</option>
+                                <option value="2">Jun 19</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- *************************************************************** -->
+                <!-- Start First Cards -->
+                <!-- *************************************************************** -->
+                       	<sec:authentication property="authorities"/>
+                <div class="card-group">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                       
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">236</h2>
+                                        <span
+                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Clients</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
+                                            class="set-doller">$</sup>18,306</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of Month
+                                    </h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
+                                        <span
+                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 font-weight-medium">864</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- *************************************************************** -->
+                <!-- End First Cards -->
+                <!-- *************************************************************** -->
+                <!-- *************************************************************** -->
+                <!-- Start Top Leader Table -->
+                <!-- *************************************************************** -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-lg-4 border-right pr-0">
+                                        <div class="card-body border-bottom text-center">
+                                            <h4 class="card-title mt-2 calendar-title"></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="calendar-events" class="monthly-schedule-list">
+                                                    	<c:forEach items="${scheduleList}" var="schedule">
+                                                        <div class="calendar-events mb-3 ui-draggable ui-draggable-handle" data-class="bg-info" style="position: relative;">
+                                                        	<i class="fa fa-circle text-info mr-2"></i>${schedule.startDay} ~ ${schedule.endDay}
+                                                        	<p>${schedule.content}</p>
+                                                        </div>
+                                                    	</c:forEach>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="card-body b-l calender-sidebar">
+                                            <div id="calendar" class="fc fc-unthemed fc-ltr"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- *************************************************************** -->
+                <!-- End Top Leader Table -->
+                <!-- *************************************************************** -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+		</div>
+		<script>
+        var d = "${category.day}";
+        var m = "${category.month}";
+        var y = "${category.year}";
+
+		! function($) {
+		    "use strict";
+
+		    var CalendarApp = function() {
+		        this.$body = $("body")
+		        this.$calendar = $('#calendar'),
+		        this.$event = ('#calendar-events div.calendar-events'),
+		        this.$categoryForm = $('#add-new-event form'),
+		        this.$extEvents = $('#calendar-events'),
+		        this.$modal = $('#my-event'),
+		        this.$saveCategoryBtn = $('.save-category'),
+		        this.$calendarObj = null
+		    };
+
+		    /* on drop */
+		    CalendarApp.prototype.onDrop = function(eventObj, date) {
+		            var $this = this;
+		            // retrieve the dropped element's stored Event Object
+		            var originalEventObject = eventObj.data('eventObject');
+		            var $categoryClass = eventObj.attr('data-class');
+		            // we need to copy it, so that multiple events don't have a reference to the same object
+		            var copiedEventObject = $.extend({}, originalEventObject);
+		            // assign it the date that was reported
+		            copiedEventObject.start = date;
+		            if ($categoryClass)
+		                copiedEventObject['className'] = [$categoryClass];
+		            // render the event on the calendar
+		            $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
+		            // is the "remove after drop" checkbox checked?
+		            if ($('#drop-remove').is(':checked')) {
+		                // if so, remove the element from the "Draggable Events" list
+		                eventObj.remove();
+		            }
+		        },
+		        CalendarApp.prototype.enableDrag = function() {
+		            //init events
+		            $(this.$event).each(function() {
+		                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+		                // it doesn't need to have a start or end
+		                var eventObject = {
+		                    title: $.trim($(this).text()) // use the element's text as the event title
+		                };
+		                // store the Event Object in the DOM element so we can get to it later
+		                $(this).data('eventObject', eventObject);
+		                // make the event draggable using jQuery UI
+		                $(this).draggable({
+		                    zIndex: 999,
+		                    revert: true, // will cause the event to go back to its
+		                    revertDuration: 0 //  original position after the drag
+		                });
+		            });
+		        }
+		    /* Initializing */
+		    CalendarApp.prototype.init = function() {
+		            this.enableDrag();
+		            /*  Initialize the calendar  */
+		            var date = new Date();
+		            var form = '';
+		            var today = new Date($.now());
+		            var length = "${fn:length(totalScheduleList)}";
+		            var defaultEvents = [];
+					var i = 0;
+					
+		            <c:forEach items="${totalScheduleList}" var="schedule">
+	            		defaultEvents[i] = {
+		                    title: "${schedule.content}",
+		                    start: Date.parse("${schedule.startDay}"),
+		                    end: Date.parse("${schedule.endDay}"),
+		                    className: 'bg-info'
+	            		};
+	            		i++;
+            		</c:forEach>
+
+		            var $this = this;
+		            $this.$calendarObj = $this.$calendar.fullCalendar({
+		                slotDuration: '00:15:00',
+		                /* If we want to split day time each 15minutes */
+		                minTime: '08:00:00',
+		                maxTime: '19:00:00',
+		                defaultView: 'month',
+		                handleWindowResize: true,
+
+		                header: {
+		                    left: 'prev, today',
+		                    center: 'title',
+		                    right: 'next'
+		                },
+		                events: defaultEvents,
+		                editable: false,
+		                droppable: false, // this allows things to be dropped onto the calendar !!!
+		                eventLimit: true, // allow "more" link when too many events
+		                selectable: false,
+		            });
+		        },
+
+		        //init CalendarApp
+		        $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
+
+		}(window.jQuery),
+
+		//initializing CalendarApp
+		$(window).on('load', function() {
+            var year = "${category.year}";
+            var month = "${category.month}";
+            var day = "${category.day}";
+            
+		    $.CalendarApp.init();
+		    
+            $(".calendar-title").text(year + "년 " + month + "월");
+            
+			$(".fc-prev-button").one().click(function() {
+				if(--month == 0) {
+					month = 12;
+					year--;
+				}
+				$(".calendar-title").text(year + "년 " + (month) + "월");
+				
+				var url = "${pageContext.request.contextPath}/student/index/get";
+				$.getJSON(url, {
+					year: year,
+					month: month
+				}, function(resultArr) {
+					var str = "";
+					console.log(resultArr);
+					if(resultArr != null) {
+						for(var i in resultArr) {
+							var obj = resultArr[i];
+							str += '<div class="calendar-events mb-3 ui-draggable ui-draggable-handle" data-class="bg-info" style="position: relative;">';
+							str += '	<i class="fa fa-circle text-info mr-2"></i>' + obj.startDay + ' ~ ' + obj.endDay;
+	                    	str += '	<p>' + obj.content + '</p>';
+	                    	str += '</div>';
+						}
+						$(".monthly-schedule-list").html(str);
+					}
+				});
+			});
+			
+			$(".fc-next-button").one().click(function() {
+				if(++month == 13) {
+					month = 1;
+					year++;
+				}
+				$(".calendar-title").text(year + "년 " + (month) + "월");
+				var url = "${pageContext.request.contextPath}/student/index/get";
+				$.getJSON(url, {
+					year: year,
+					month: month
+				}, function(resultArr) {
+					var str = "";
+					console.log(resultArr);
+					if(resultArr != null) {
+						for(var i in resultArr) {
+							var obj = resultArr[i];
+							str += '<div class="calendar-events mb-3 ui-draggable ui-draggable-handle" data-class="bg-info" style="position: relative;">';
+							str += '	<i class="fa fa-circle text-info mr-2"></i>' + obj.startDay + ' ~ ' + obj.endDay;
+	                    	str += '	<p>' + obj.content + '</p>';
+	                    	str += '</div>';
+						}
+						$(".monthly-schedule-list").html(str);
+					}
+				});
+			});
+            
+
+		});
+		</script>
+<jsp:include page="../includes/footer.jsp" />

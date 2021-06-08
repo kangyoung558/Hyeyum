@@ -1,0 +1,17 @@
+package com.hyeyum.domain;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class CorrectionVO {
+	private Long corrno;
+	private String reason;
+	private Long studno;
+	private String studname;
+	private Long coursno;
+	private String coursname;
+	private Integer status; // 0 처리중 1 승인됨 2 승인거부 
+	private Date regDate;
+}

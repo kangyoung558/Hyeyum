@@ -1,0 +1,11 @@
+package com.hyeyum.domain;
+
+import lombok.Data;
+
+@Data
+public class ScheduleVO {
+	private Long scheno;
+	private String startDay;
+	private String endDay;
+	private String content;
+}

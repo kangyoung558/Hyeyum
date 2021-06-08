@@ -1,0 +1,91 @@
+package com.hyeyum.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.hyeyum.domain.ScheduleCategory;
+import com.hyeyum.domain.ScheduleVO;
+import com.hyeyum.service.CommonService;
+
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@Log4j
+public class CommonController {
+	@Autowired
+	private CommonService commonService;
+	
+	@GetMapping("/accessError")
+	public void accessDenied(Authentication auth, Model model) {
+		log.info("accessDenied .... " + auth);
+		model.addAttribute("msg", "Acess Denied( 접근거부)");
+	}
+	
+	@GetMapping("/customLogin")
+	public void loginInput(String error, String logout, Model model) {
+		log.info("error :: "+ error);
+		log.info("logout :: "+ logout);
+		
+		if(error != null) {
+			model.addAttribute("error", "Login Error check your account");
+		}
+		if(logout != null) {
+			model.addAttribute("logout", "logout sss");
+		}
+	}
+	
+	@GetMapping("/customLogout")
+	public void logoutGet() {
+		log.info("logout.........");
+	}
+	
+	@PostMapping("/customLogout")
+	public void logoutPost(HttpServletRequest req) {
+		log.warn(" post  logout.........");
+		log.warn(req.getHeader("referer"));
+	}
+	
+	/**
+	 * DB로부터 해당 카테고리의 학사일정 목록을 가져오는 메서드
+	 * @author 전민우
+	 */
+	@GetMapping("schedule/get")
+	@PreAuthorize("isAuthenticated()")
+	@ResponseBody
+	public List<ScheduleVO> getScheduleList(ScheduleCategory category) {
+		log.info("getScheduleList...");
+		
+		return commonService.getScheduleList(category);
+	}
+	
+	/**
+	 * DB에 학사일정을 추가하는 메서드
+	 * @author 전민우
+	 */
+	@PostMapping("schedule/add")
+	@Secured("ROLE_ADMIN")
+	public String addSchedule(ScheduleVO scheduleVO, RedirectAttributes rttr) {
+		log.info("addSchedule..." + scheduleVO);
+		
+		if(commonService.insertSchedule(scheduleVO) > 0) {
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
+		return "redirect:../admin/index";
+	}
+
+}
